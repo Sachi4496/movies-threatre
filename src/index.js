@@ -1,8 +1,8 @@
 const express = require('express');
 
-// const userController = require('./controllers/user.controller')
+const userController = require('./controllers/user.controller')
 
-const {register ,login} = require("./controllers/auth")
+// const {register ,login} = require("./controllers/auth")
 
 const moviesController = require('./controllers/movies.controller')
 
@@ -18,12 +18,12 @@ const app = express();
 
 app.use(express.json());
 
-// app.use("/users", userController);
-const upload = require("./middlewares/upload")
+app.use("/users", userController);
+// const upload = require("./middlewares/upload")
 
-app.post("/user/register",upload.single("profile_pic"),  register)
+// app.post("/user/register",upload.single("profile_pic"),  register)
 
-app.post("/user/login", login)
+// app.post("/user/login", login)
 
 app.use("/movies", moviesController);
 
