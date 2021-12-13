@@ -19,8 +19,7 @@ const register = async(req, res) => {
             name : req.body.name,
             email : req.body.email,
             password : req.body.password,
-            profile_photo_url: req.file.path,
-            roles : req.body.roles
+            profile_pic: req.file.path,
         })
 
         const token = newToken(user)
