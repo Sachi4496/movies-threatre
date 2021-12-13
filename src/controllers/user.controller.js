@@ -35,6 +35,34 @@ router.get("", async (req, res) => {
     }catch(e){
         return res.status(500).send({status:"failed", message: e.message});
     }
+});
+
+router.patch("/:id", upload.single("profile_image"), async (req, res) => {
+    try {
+        const userone = await User.findById(req.params.id).lean().exec();
+        const user = await User.findByIdAndUpdate(req.params.id, {
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            profile_pic: req.file.path,
+        }, { new: true }).lean().exec();
+        res.status(200).send(user);
+        if (req.file?.path) {
+            fs.unlinkSync(userone.profile_image)
+        }
+    } catch (e) {
+        return res.status(500).json({ status: "failed", message: e.message });
+    }
+})
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id).lean().exec();
+        res.send(user);
+        fs.unlinkSync(user.profile_pic);
+    } catch (e) {
+        return res.status(500).json({ status: "failed", message: e.message });
+    }
 })
 
 module.exports = router;
