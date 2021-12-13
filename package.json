@@ -1,0 +1,32 @@
+{
+  "name": "movies-threatre",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sachi4496/movies-threatre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sachi4496/movies-threatre/issues"
+  },
+  "homepage": "https://github.com/Sachi4496/movies-threatre#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.1"
+  },
+  "devDependencies": {
+    "multer": "^1.4.4"
+  }
+}
